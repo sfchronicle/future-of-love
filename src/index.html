@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.seo_title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="__sync_contentCategory" content="meterA">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="http://projects.sfchronicle.com/shared/js/jquery.min.js"></script>
+
+
+    <%= !json.project.embedded ? t.include("partials/_paywall.html") : t.include("partials/_embedframe.html") %>
+
+    <%= t.include("partials/_head.html") %>
+
+  </head>
+
+  <%= !json.project.embedded ? "<body>" : "<body is='responsive-body'>" %>
+
+    <div class="outer">
+
+      <div class="hed">Hollywood’s take on love in the age of computers</div>
+      <div class="chatter">Long before online dating and test-tube babies existed, Hollywood soothsayers were busy imagining how technologies of the future might change relationships. Here are some cinematic predictions — and what actually happened.</div>
+
+      <div id="top"></div>
+
+      <div class="button-container">
+        <% csv.MovieData.forEach(function(section,idx){ %>
+          <% if (idx == 0) { %>
+            <div class="button selected" id="button<%=section.slug%>"><%=section.movie%></div>
+          <% } else { %>
+            <div class="button" id="button<%=section.slug%>"><%=section.movie%></div>
+          <% } %>
+        <% }) %>
+      </div>
+
+      <% csv.MovieData.forEach(function(section,idx){ %>
+
+        <% if (idx == 0) { %>
+          <div class="section-emma selected" id="section<%=section.slug%>">
+        <% } else { %>
+          <div class="section-emma" id="section<%=section.slug%>">
+        <% } %>
+
+          <div class="section-title"><%=section.movie%></div>
+
+          <div class="inline-img">
+            <img src='http://ww2.hdnux.com/photos/54/11/64/<%= section.photo %>/3/1000x500.jpg'></img>
+            <div class="caption"><%=section.caption%> <span class="byline"><%=section.photographer%>, <%=section.photog_institution%></span></div>
+          </div>
+
+          <div class="sub-title">What it predicted</div>
+          <div class="sub-section"><%=section.predicted%></div>
+
+          <div class="sub-title">What happened</div>
+          <div class="sub-section"><%=section.happened%></div>
+
+        </div>
+
+      <% }); %>
+
+      <div class="divider"></div>
+
+      <div class="credit-emma">
+        <div class="entry">Interactive Producer: Emma O'Neill  &bull; <a href="mailto:eoneill@sfchronicle.com">eoneill@sfchronicle.com</a>   &bull; <a href = "https://twitter.com/emmaruthoneill" target="_blank">@emmaruthoneill</a></div>
+      </div>
+
+
+    </div>
+
+    <script src="app.js" async></script>
+    <%= t.include("partials/_helloSFC.html") %>
+
+  </body>
+</html>
