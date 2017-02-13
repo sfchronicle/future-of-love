@@ -16,9 +16,9 @@ require("./lib/social"); //Do not delete
 
 // WHAT I ACTUALLY ENDED UP USING ON WCM
 
-document.getElementById("scroll").addEventListener("click", function() {
-    $('html, body').animate({
-        // scrollTop: $("#scroll-to-top").offset().top
-        scrollTop: $("#top").offset().top
-    }, 600);
-});
+// document.getElementById("scroll").addEventListener("click", function() {
+//     $('html, body').animate({
+//         // scrollTop: $("#scroll-to-top").offset().top
+//         scrollTop: $("#top").offset().top
+//     }, 600);
+// });
